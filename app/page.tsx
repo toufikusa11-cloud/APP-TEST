@@ -4591,15 +4591,59 @@ function PlannerTracker() {
   const subjects = [
     {
       name: 'علوم الطبيعة والحياة',
-      units: ['تركيب البروتين', 'البنية والوظيفة', 'النشاط الإنزيمي', 'المناعة', 'الاتصال العصبي', 'آليات تحويل الطاقة "التنفس والتركيب الضوئي"']
+      units: [
+        'مقر تركيب البروتين في الخلية',
+        'انتقال المعلومة الوراثية',
+        'آلية الاستنساخ',
+        'الشفرة الوراثية',
+        'آلية الترجمة',
+        'العلاقة بين البنية والتخصص الوظيفي للبروتين',
+        'النشاط الإنزيمي للبروتينات',
+        'الذات واللاذات',
+        'دور البروتينات في حالة الاستجابة المناعية الخلطية',
+        'دور البروتينات في حالة الاستجابة المناعية الخلوية',
+        'تحفيز الخلايا اللمفاوية (التعاون الخلوي)',
+        'فقدان المناعة المكتسبة (فيروس VIH)',
+        'آليات النقل المشبكي',
+        'كمون الراحة',
+        'كمون العمل',
+        'الإدماج العصبي',
+        'تأثير المخدرات',
+        'مقر التركيب الضوئي ومراحله',
+        'تحويل الطاقة الكيميائية الكامنة في الجزيئات إلى طاقة قابلة للاستعمال (ATP)',
+        'تحويل الطاقة الكيميائية الكامنة في الوسط الهيولي (التنفس الخلوي)',
+        'تحويل الطاقة الكيميائية الكامنة في الوسط الهيولي (التخمر)',
+        'إنجاز حصيلة التحولات الطاقوية على المستوى الخلوي في شكل مخطط',
+        'بنية الكرة الأرضية',
+        'حركات الصفائح التكتونية (حركة التباعد / حركة التقارب)',
+        'الطاقة الداخلية للكرة الأرضية',
+        'الظواهر المرتبطة بالبناء على مستوى الظهرة',
+        'الظواهر المرتبطة بالغوص'
+      ]
     },
     {
       name: 'العلوم الفيزيائية',
-      units: ['المتابعة الزمنية', 'الميكانيكا والأقمار', 'السقوط والقذيفة', 'الدارات RC و RL', 'التحولات النووية']
+      units: [
+        'المتابعة الزمنية',
+        'تطور جملة ميكانيكية',
+        'الضواهر الكهربائية',
+        'تطور جملة ميكانيكية نحو حالة التوازن',
+        'التحولات النووية',
+        'التطورات المهتزة',
+        'مفهوم الموجة'
+      ]
     },
     {
       name: 'الرياضيات',
-      units: ['الدوال', 'المتتاليات', 'الاحتمالات', 'الأعداد المركبة']
+      units: [
+        'الدوال',
+        'الدوال الأسية و اللوغارتمية',
+        'المتتاليات',
+        'الدوال الأصلية',
+        'الإحتمالات',
+        'الأعداد المركبة',
+        'الهندسة في الفضاء'
+      ]
     },
     {
       name: 'العلوم الإسلامية',
@@ -4623,9 +4667,101 @@ function PlannerTracker() {
         'العلاقات الاجتماعية بين المسلمين وغيرهم',
         'خطبة الرسول ﷺ في حجة الوداع'
       ]
+    },
+    {
+      name: 'الفلسفة',
+      units: []
+    },
+    {
+      name: 'التاريخ والجغرافيا',
+      units: [
+        'بروز الصراع و تشكل العالم',
+        'مساعي الإنفراج الدولي',
+        'من الثنائية إلى الأحادية القطبية',
+        'العمل المسلح و رد فعل الإستعمار',
+        'استعادة السيادة الوطنية و رد فعل الإستعمار',
+        'العالم الثالث بين تراجع الإستعمار التقليدي و استمرار حركات التحرر',
+        'فلسطين و من تصفية الإستعمار التقليدي و استمرارية التحرر',
+        'اشكالية التقدم و التخلف',
+        'المبادلات و التنقلات في العالم',
+        'مصادر القوة الأمريكية و تأثيرها على الإقتصاد العالمي',
+        'ظاهرة التكتل و أثرها في قوة الإتحاد الأوروبي',
+        'العلاقة بين السكان و التنمية في شرق و جنوب شرق اسيا',
+        'الإقتصاد الجزائري في العالم',
+        'التنمية في البرازيل'
+      ]
+    },
+    {
+      name: 'اللغة العربية وآدابها',
+      units: [
+        'أحكام الحال والتمييز',
+        'إعراب الجمل',
+        'إذا، إذ، حينئذ، إذن',
+        'دلالات إذا وإعرابها',
+        'دلالات إذ وإعرابها',
+        'حينئذ، وقتئذ، يومئذ...',
+        'إعراب إذًا، إذن',
+        'دلالات وإعراب لو، لولا، لوما',
+        'ثوابت إعرابية',
+        'إعراب الضمائر المتصلة والمنفصلة',
+        'النواسخ والحروف المشبهة بالفعل',
+        'أنماط النصوص',
+        'الاتساق والانسجام',
+        'العلاقات المعنوية',
+        'الحقول الدلالية',
+        'نثر الشعر',
+        'تلخيص النصوص',
+        'القيم، العواطف، النزعات',
+        'الصور البيانية: التشبيه، الاستعارة، الكناية',
+        'المجاز العقلي والمرسل',
+        'الأساليب: الإنشائية والخبرية',
+        'المحسنات البديعية: اللفظية والمعنوية',
+        'كيف أجيب على سؤال البناء الفكري',
+        'بعض أسئلة البناء الفكري المتكررة',
+        'شخصية الأديب',
+        'الأجناس الأدبية - الأنواع الأدبية',
+        'الظواهر النقدية',
+        'الهيكلة الفكرية للنص - الفكرة العامة والأفكار الأساسية',
+        'محور عصر الضعف',
+        'محور الرومانسية (الشعر المهجري)',
+        'محور الرمز في الشعر العربي المعاصر',
+        'محور الحزن في الشعر العربي المعاصر',
+        'محور المقال',
+        'محور شعر التفعيلة',
+        'محور الالتزام',
+        'محور الثورة الجزائرية',
+        'كيف أتعامل مع نصوص عصر الضعف؟',
+        'كيف أتعامل مع نصوص عصر النهضة؟'
+      ]
+    },
+    {
+      name: 'اللغة الفرنسية',
+      units: [
+        'Le texte historique (النص التاريخي)',
+        'Le débat d\'idées (النص الحجاجي)',
+        'L\'appel (نداء)',
+        'La nouvelle fantastique / La relation de voyage',
+        'Compréhension de l\'écrit',
+        'Expression écrite',
+        'Les types de textes'
+      ]
+    },
+    {
+      name: 'اللغة الإنجليزية',
+      units: [
+        'Ancient Civilizations (الحضارات القديمة)',
+        'Ethics in Business (الأخلاق في العمل)',
+        'Education in the World (التعليم في العالم)',
+        'Safety First (السلامة والصحة والأغذية)',
+        'Astronomy and Solar System (علم الفلك والنظام الشمسي)',
+        'Reading comprehension',
+        'Grammar & vocabulary',
+        'Written expression'
+      ]
     }
   ];
 
+  const [selectedSubject, setSelectedSubject] = useState<string>(subjects[0].name);
   const [progress, setProgress] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
@@ -4640,42 +4776,159 @@ function PlannerTracker() {
     localStorage.setItem('bac_tracker', JSON.stringify(updated));
   };
 
+  const getSubjectIcon = (name: string) => {
+    switch (name) {
+      case 'علوم الطبيعة والحياة': return <Dna className="w-5 h-5" />;
+      case 'العلوم الفيزيائية': return <Atom className="w-5 h-5" />;
+      case 'الرياضيات': return <Calculator className="w-5 h-5" />;
+      case 'العلوم الإسلامية': return <BookOpenCheck className="w-5 h-5" />;
+      case 'الفلسفة': return <Brain className="w-5 h-5" />;
+      case 'التاريخ والجغرافيا': return <Compass className="w-5 h-5" />;
+      case 'اللغة العربية وآدابها': return <BookOpen className="w-5 h-5" />;
+      case 'اللغة الفرنسية': return <Languages className="w-5 h-5" />;
+      case 'اللغة الإنجليزية': return <Languages className="w-5 h-5 text-blue-500 dark:text-blue-400" />;
+      default: return <GraduationCap className="w-5 h-5" />;
+    }
+  };
+
+  const currentSubjectObj = subjects.find(s => s.name === selectedSubject) || subjects[0];
+
+  const calculateCompletionPercentage = (subj: typeof subjects[0]) => {
+    const total = subj.units.length * 4;
+    if (total === 0) return 0;
+    let completed = 0;
+    subj.units.forEach(unit => {
+      ['understand', 'review', 'apps', 'exercises'].forEach(type => {
+        if (progress[`${subj.name}_${unit}_${type}`]) {
+          completed++;
+        }
+      });
+    });
+    return Math.round((completed / total) * 100);
+  };
+
   return (
     <div className="space-y-8">
-      {subjects.map(subject => (
-        <div key={subject.name} className="space-y-4">
-          <h3 className="text-xl font-bold text-blue-800 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-4 py-2 rounded-lg inline-block">{subject.name}</h3>
-          <div className="overflow-x-auto">
-            <table className="w-full text-right border-collapse">
-              <thead className="bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700">
-                <tr>
-                  <th className="py-3 px-4 font-bold text-slate-700 dark:text-slate-300 w-1/3">الوحدة</th>
-                  <th className="py-3 px-4 font-bold text-slate-700 dark:text-slate-300 text-center">الفهم</th>
-                  <th className="py-3 px-4 font-bold text-slate-700 dark:text-slate-300 text-center">المراجعة</th>
-                  <th className="py-3 px-4 font-bold text-slate-700 dark:text-slate-300 text-center">حل التطبيقات</th>
-                  <th className="py-3 px-4 font-bold text-slate-700 dark:text-slate-300 text-center">حل التمارين</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-                {subject.units.map(unit => (
-                  <tr key={unit} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
-                    <td className="py-3 px-4 font-semibold text-slate-800 dark:text-slate-200">{unit}</td>
-                    {['understand', 'review', 'apps', 'exercises'].map(type => (
-                      <td key={type} className="py-3 px-4 text-center">
-                        <button onClick={() => toggleCheckbox(subject.name, unit, type)} className="outline-none">
-                          {progress[`${subject.name}_${unit}_${type}`] ? 
-                            <CheckSquare className="w-6 h-6 text-emerald-500 mx-auto" /> : 
-                            <Square className="w-6 h-6 text-slate-300 dark:text-slate-600 mx-auto" />}
-                        </button>
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+      {/* اختيار المادة */}
+      <div className="space-y-4">
+        <label className="block text-base md:text-lg font-bold text-slate-700 dark:text-slate-300 mb-2">
+          اختر المادة أولاً للبدء في تتبع مراجعتك:
+        </label>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+          {subjects.map(subj => {
+            const isSelected = selectedSubject === subj.name;
+            const percentage = calculateCompletionPercentage(subj);
+            return (
+              <button
+                key={subj.name}
+                onClick={() => setSelectedSubject(subj.name)}
+                className={`flex flex-col items-center justify-center p-4 rounded-2xl border transition-all duration-300 text-center gap-3 outline-none ${
+                  isSelected
+                    ? 'bg-blue-600 border-blue-600 text-white shadow-lg shadow-blue-500/20 scale-102'
+                    : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-blue-400 dark:hover:border-blue-700 hover:bg-slate-50 dark:hover:bg-slate-800/50'
+                }`}
+              >
+                <div className={`p-2 rounded-xl transition-colors ${isSelected ? 'bg-blue-500 text-white' : 'bg-slate-100 dark:bg-slate-800'}`}>
+                  {getSubjectIcon(subj.name)}
+                </div>
+                <span className="font-bold text-sm leading-tight">{subj.name}</span>
+                {/* Progress bar miniature inside button */}
+                <div className="w-full mt-1">
+                  <div className="flex justify-between items-center text-[10px] font-bold mb-1 opacity-80">
+                    <span>نسبة الإنجاز</span>
+                    <span>{percentage}%</span>
+                  </div>
+                  <div className="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <div 
+                      className={`h-full transition-all duration-500 ${isSelected ? 'bg-white' : 'bg-blue-500'}`} 
+                      style={{ width: `${percentage}%` }} 
+                    />
+                  </div>
+                </div>
+              </button>
+            );
+          })}
         </div>
-      ))}
+      </div>
+
+      {/* عرض الوحدات للمادة المختارة */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={selectedSubject}
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -15 }}
+          transition={{ duration: 0.25 }}
+          className="space-y-6"
+        >
+          <div className="space-y-4 bg-white dark:bg-slate-900/40 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-slate-100 dark:border-slate-800 pb-4 gap-4">
+              <div className="flex items-center gap-3">
+                <div className="p-3 bg-blue-500/10 text-blue-500 rounded-xl">
+                  {getSubjectIcon(currentSubjectObj.name)}
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200">
+                    وحدات مادة {currentSubjectObj.name}
+                  </h3>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">حدد المهام المكتملة لتتبع تقدمك اليومي.</p>
+                </div>
+              </div>
+              <div className="bg-blue-50 dark:bg-blue-950/40 border border-blue-100 dark:border-blue-900/50 rounded-2xl p-4 flex flex-col items-center justify-center min-w-[140px]">
+                <span className="text-xs font-bold text-slate-500 dark:text-slate-400 mb-1">الإنجاز الكلي</span>
+                <span className="text-2xl font-black text-blue-600 dark:text-blue-400">
+                  {calculateCompletionPercentage(currentSubjectObj)}%
+                </span>
+              </div>
+            </div>
+
+            {currentSubjectObj.units.length === 0 ? (
+              <div className="text-center py-12 text-slate-500 dark:text-slate-400">
+                <Brain className="w-12 h-12 mx-auto mb-3 text-slate-300 dark:text-slate-700 animate-pulse" />
+                <p className="text-lg font-bold text-slate-700 dark:text-slate-300">لا يتوفر محتوى حاليا</p>
+                <p className="text-sm opacity-80 mt-1 text-slate-500 dark:text-slate-400">يتم العمل على تجهيز وإضافة الوحدات الخاصة بهذه المادة قريباً.</p>
+              </div>
+            ) : (
+              <div className="overflow-x-auto custom-scrollbar">
+                <table className="w-full text-right border-collapse">
+                  <thead className="bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700">
+                    <tr>
+                      <th className="py-4 px-4 font-bold text-slate-700 dark:text-slate-300 w-2/5">الوحدة</th>
+                      <th className="py-4 px-4 font-bold text-slate-700 dark:text-slate-300 text-center">الفهم</th>
+                      <th className="py-4 px-4 font-bold text-slate-700 dark:text-slate-300 text-center">المراجعة</th>
+                      <th className="py-4 px-4 font-bold text-slate-700 dark:text-slate-300 text-center">حل التطبيقات</th>
+                      <th className="py-4 px-4 font-bold text-slate-700 dark:text-slate-300 text-center">حل التمارين</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                    {currentSubjectObj.units.map(unit => (
+                      <tr key={unit} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                        <td className="py-4 px-4 font-bold text-slate-800 dark:text-slate-200 text-base">{unit}</td>
+                        {['understand', 'review', 'apps', 'exercises'].map(type => {
+                          const isDone = progress[`${currentSubjectObj.name}_${unit}_${type}`];
+                          return (
+                            <td key={type} className="py-4 px-4 text-center">
+                              <button 
+                                onClick={() => toggleCheckbox(currentSubjectObj.name, unit, type)} 
+                                className="focus:outline-none transition-transform active:scale-90"
+                              >
+                                {isDone ? 
+                                  <CheckSquare className="w-6 h-6 text-emerald-500 mx-auto cursor-pointer" /> : 
+                                  <Square className="w-6 h-6 text-slate-300 dark:text-slate-700 hover:text-blue-400 dark:hover:text-blue-500 mx-auto cursor-pointer" />
+                                }
+                              </button>
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }
