@@ -97,6 +97,50 @@ export function saveCodes(codes: ActivationCode[]): void {
   }
 }
 
+enum OperationType {
+  CREATE = 'create',
+  UPDATE = 'update',
+  DELETE = 'delete',
+  LIST = 'list',
+  GET = 'get',
+  WRITE = 'write',
+}
+
+interface FirestoreErrorInfo {
+  error: string;
+  operationType: OperationType;
+  path: string | null;
+  authInfo: {
+    userId?: string | null;
+    email?: string | null;
+    emailVerified?: boolean | null;
+    isAnonymous?: boolean | null;
+    tenantId?: string | null;
+    providerInfo?: {
+      providerId?: string | null;
+      email?: string | null;
+    }[];
+  }
+}
+
+function handleFirestoreError(error: unknown, operationType: OperationType, path: string | null): never {
+  const errInfo: FirestoreErrorInfo = {
+    error: error instanceof Error ? error.message : String(error),
+    authInfo: {
+      userId: null,
+      email: null,
+      emailVerified: null,
+      isAnonymous: null,
+      tenantId: null,
+      providerInfo: []
+    },
+    operationType,
+    path
+  };
+  console.error('Firestore Error: ', JSON.stringify(errInfo));
+  throw new Error(JSON.stringify(errInfo));
+}
+
 // Validate a code and mark as used if valid in Firestore
 export async function consumeActivationCode(code: string): Promise<{ success: boolean; message: string }> {
   const normalized = code.trim().toUpperCase();
@@ -107,14 +151,22 @@ export async function consumeActivationCode(code: string): Promise<{ success: bo
     return { success: false, message: 'رمز التفعيل غير صحيح!' };
   }
 
+  const pathForGet = `used_codes/${normalized}`;
+  let codeDoc;
   try {
     const codeRef = doc(db, 'used_codes', normalized);
-    const codeDoc = await getDoc(codeRef);
-    
-    if (codeDoc.exists()) {
-      return { success: false, message: 'رمز التفعيل هذا تم استخدامه مسبقاً من طرف مستخدم آخر!' };
-    }
+    codeDoc = await getDoc(codeRef);
+  } catch (err) {
+    handleFirestoreError(err, OperationType.GET, pathForGet);
+  }
+  
+  if (codeDoc.exists()) {
+    return { success: false, message: 'رمز التفعيل هذا تم استخدامه مسبقاً من طرف مستخدم آخر!' };
+  }
 
+  const pathForWrite = `used_codes/${normalized}`;
+  try {
+    const codeRef = doc(db, 'used_codes', normalized);
     // Mark as used in Firestore durably
     await setDoc(codeRef, {
       code: normalized,
@@ -124,8 +176,7 @@ export async function consumeActivationCode(code: string): Promise<{ success: bo
 
     return { success: true, message: 'تم تفعيل المنصة بنجاح!' };
   } catch (err) {
-    console.error('Error consuming activation code in Firestore:', err);
-    return { success: false, message: 'حدث خطأ أثناء معالجة رمز التفعيل.' };
+    handleFirestoreError(err, OperationType.WRITE, pathForWrite);
   }
 }
 
@@ -134,8 +185,13 @@ export async function loadCodesWithFirebase(): Promise<ActivationCode[]> {
   const baseCodes = loadCodes();
   
   // Clone to avoid side effects
-  const codesCopy = baseCodes.map(c => ({ ...c, used: false, usedAt: undefined }));
+  const codesCopy: ActivationCode[] = baseCodes.map(c => ({
+    code: c.code,
+    used: false,
+    usedAt: undefined as string | undefined
+  }));
 
+  const pathForList = 'used_codes';
   try {
     const usedCol = collection(db, 'used_codes');
     const snapshot = await getDocs(usedCol);
@@ -143,7 +199,19 @@ export async function loadCodesWithFirebase(): Promise<ActivationCode[]> {
     const usedMap = new Map<string, string>();
     snapshot.forEach(doc => {
       const data = doc.data();
-      usedMap.set(doc.id, data.usedAt || new Date().toISOString());
+      let usedAtStr = new Date().toISOString();
+      if (data.usedAt) {
+        if (data.usedAt && typeof data.usedAt.toDate === 'function') {
+          usedAtStr = data.usedAt.toDate().toISOString();
+        } else {
+          try {
+            usedAtStr = new Date(data.usedAt).toISOString();
+          } catch (e) {
+            usedAtStr = String(data.usedAt);
+          }
+        }
+      }
+      usedMap.set(doc.id, usedAtStr);
     });
 
     for (const codeObj of codesCopy) {
@@ -153,7 +221,7 @@ export async function loadCodesWithFirebase(): Promise<ActivationCode[]> {
       }
     }
   } catch (err) {
-    console.error('Error fetching used codes from Firestore:', err);
+    handleFirestoreError(err, OperationType.LIST, pathForList);
   }
 
   return codesCopy;

@@ -1,0 +1,30 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 1. Global Safety Net: default-deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // 2. Helpers for ID and Schema validation
+    function isValidId(id) {
+      return id is string && id.size() <= 64 && id.matches('^BAC-[A-Z0-9]{3}-[A-Z0-9]{3}-[A-Z0-9]{3}$');
+    }
+
+    function isValidUsedCode(data, codeId) {
+      return data.keys().hasAll(['code', 'used', 'usedAt'])
+          && data.keys().size() == 3
+          && data.code == codeId
+          && data.used == true
+          && (data.usedAt is timestamp || data.usedAt is string);
+    }
+
+    // 3. Fortress rules for used_codes collection
+    match /used_codes/{codeId} {
+      allow get: if isValidId(codeId);
+      allow list: if true;
+      allow create: if isValidId(codeId) && isValidUsedCode(request.resource.data, codeId);
+      allow update, delete: if false; // Once consumed, code records are completely immutable
+    }
+  }
+}

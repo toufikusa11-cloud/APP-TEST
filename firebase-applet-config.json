@@ -1,10 +1,11 @@
 {
-  "projectId": "remixed-project-id",
-  "appId": "remixed-app-id",
-  "apiKey": "remixed-api-key",
-  "authDomain": "remixed-auth-domain",
-  "firestoreDatabaseId": "remixed-firestore-database-id",
-  "storageBucket": "remixed-storage-bucket",
-  "messagingSenderId": "remixed-messaging-sender-id",
-  "measurementId": "remixed-measurement-id"
+  "projectId": "ninth-catalyst-vnzsc",
+  "appId": "1:914054674878:web:5ebf30c09c6a93e24021ef",
+  "apiKey": "AIzaSyCq22HhJx7Ky5i3onVyTqEuncYhjjwdYpQ",
+  "authDomain": "ninth-catalyst-vnzsc.firebaseapp.com",
+  "firestoreDatabaseId": "ai-studio-remixremixaapppp-79993feb-bb23-4e7b-920e-45685c9caae4",
+  "storageBucket": "ninth-catalyst-vnzsc.firebasestorage.app",
+  "messagingSenderId": "914054674878",
+  "measurementId": "",
+  "oAuthClientId": "914054674878-sb8e00td99mhr8jokugejtibdpit5gj5.apps.googleusercontent.com"
 }

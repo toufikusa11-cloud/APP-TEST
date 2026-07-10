@@ -1,0 +1,32 @@
+{
+  "entities": {
+    "UsedCode": {
+      "title": "UsedCode",
+      "description": "An activation code used to activate the bacline platform",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "The normalized activation code",
+          "pattern": "^BAC-[A-Z0-9]{3}-[A-Z0-9]{3}-[A-Z0-9]{3}$"
+        },
+        "used": {
+          "type": "boolean",
+          "description": "Whether the code is used"
+        },
+        "usedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the code was activated"
+        }
+      },
+      "required": ["code", "used", "usedAt"]
+    }
+  },
+  "firestore": {
+    "used_codes/{codeId}": {
+      "schema": "UsedCode",
+      "description": "Collection storing used activation codes"
+    }
+  }
+}
