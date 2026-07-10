@@ -1,0 +1,8 @@
+{
+  "name": "Remix: remix aapppppppppppppppppppp",
+  "description": "Educational web platform for Algerian Baccalaureate students",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
