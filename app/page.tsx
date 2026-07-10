@@ -943,6 +943,29 @@ export default function Platform() {
   const [isFocusMode, setIsFocusMode] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    };
+  }, []);
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.error(err);
+      });
+    } else {
+      document.exitFullscreen().catch(err => {
+        console.error(err);
+      });
+    }
+  };
 
   // --- ACTIVATION SYSTEM STATE ---
   const [isActivated, setIsActivated] = useState(false);
@@ -1184,6 +1207,26 @@ export default function Platform() {
           <h1 className="text-2xl font-black text-blue-400 tracking-wider hidden sm:block font-mono leading-none">bacline</h1>
         </div>
         
+        {/* Fullscreen Button */}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={toggleFullscreen}
+            className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-white/5 shadow-sm transition-all duration-200 cursor-pointer text-sm font-bold hover:text-white group"
+            title={isFullscreen ? "إنهاء ملء الشاشة" : "ملء الشاشة"}
+          >
+            {isFullscreen ? (
+              <>
+                <Minimize className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
+                <span>إلغاء ملء الشاشة</span>
+              </>
+            ) : (
+              <>
+                <Maximize className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
+                <span>ملء الشاشة</span>
+              </>
+            )}
+          </button>
+        </div>
 
       </header>
 
